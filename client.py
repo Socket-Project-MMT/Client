@@ -8,10 +8,11 @@ HOST="127.0.0.1"
 FORMAT="utf8"
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print("I'm client")
+
 
 
 try: 
+    print("Nhap IP)
     client.connect((HOST, 6767)) #lắng nghe ở cổng 6767
     print("Client address: ", client.getsockname())
     
