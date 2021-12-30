@@ -37,11 +37,11 @@ window.title("W E L C O M E")
 window.geometry('700x350')
 window.resizable(0, 0)
 
-bg = PhotoImage(file = "bg.jpg")
+#bg = PhotoImage(file = "bg.jpg")
   
-# Show image using label
-label1 = Label( root, image = bg)
-label1.place(x = 0, y = 0)
+## Show image using label
+#label1 = Label( root, image = bg)
+#label1.place(x = 0, y = 0)
 
 Frame(window, width = 2, height = 300, bg = 'gold').place(x = 350, y = 25)
 
