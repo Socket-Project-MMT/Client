@@ -10,10 +10,9 @@ import threading
 
 #------------- global variables
 
-s = socket.socket()
 # HOST = input("Enter server IP: ")
 HOST="127.0.0.1"
-FORMAT="utf8"
+FORMAT="utf-8"
 
 window = Tk()
 window.title("W E L C O M E")
@@ -29,13 +28,14 @@ def sendList(client, list):
         print("msg", msg)
     msg="end"
     client.sendall(msg.encode(FORMAT))
-def recvList(conn):
+def recvList(client):
   mylist=[]
-  item=conn.recv(1024).decode(FORMAT)
+  item=client.recv(1024).decode(FORMAT)
   while(item!="end"):
     mylist.append(item)
-    conn.sendall(item.encode(FORMAT))
-    item=conn.recv(1024).decode(FORMAT)
+    client.sendall(item.encode(FORMAT))
+    item=client.recv(1024).decode(FORMAT)
+
 
   return mylist
 def Log_in(client):
@@ -44,9 +44,17 @@ def Log_in(client):
     # Log_in_win = Tk()
     window.title('TRA TỶ GIÁ VÀNG')
     window.geometry('400x500')
-  
+
     sjclist= recvList(client)
-    print("sjclist:", sjclist)
+    dates= recvList(client)
+    print(dates)
+    
+    searchinfor=["20211231", "Mi Hồng 999"]
+    sendList(client, searchinfor)
+    response= recvList(client)
+    print(response[0], response[1])
+
+
 
     # variable = StringVar(window)
     # variable.set(sjclist[0]) # default value
